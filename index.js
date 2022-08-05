@@ -8,6 +8,52 @@
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
 
+const dog = {
+   species: 'dog',
+   name: 'Robert',
+   gender: 'male',
+   legs: 4,
+   hands: 0,
+   saying: 'BARK!',
+};
+
+const cat = {
+   species: 'cat',
+   name: 'Lily',
+   gender: 'female',
+   legs: 4,
+   hands: 0,
+   saying: 'meooow!',
+};
+
+const woman = {
+   species: 'human',
+   name: 'Charlie',
+   gender: 'female',
+   legs: 2,
+   hands: 2,
+   saying: 'Hi John!',
+   friends: ['John', 'Lola'],
+};
+
+const man = {
+   species: 'human',
+   name: 'John',
+   gender: 'male',
+   legs: 2,
+   hands: 2,
+   saying: 'Hi Charlie!',
+   friends: ['Charlie', 'Lola'],
+};
+
+const catWoman = new Object();
+Object.setPrototypeOf(catWoman, cat);
+catWoman.species = 'human';
+catWoman.name = 'Lola';
+catWoman.legs = 2;
+catWoman.hands = 2;
+catWoman.saying = catWoman.saying;
+catWoman.friends = ['John', 'Charlie'];
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
@@ -28,4 +74,7 @@
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
 
-
+const inhabitants = [dog, cat, woman, man, catWoman];
+inhabitants.forEach(obj => {
+   print(Object.values(obj).join('; '))
+});
