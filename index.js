@@ -8,73 +8,64 @@
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
 
-const dog = {
-   species: 'dog',
-   name: 'Robert',
-   gender: 'male',
-   legs: 4,
-   hands: 0,
-   saying: 'BARK!',
-};
+class Creature {
+   species;
+   name;
+   gender;
+   saying;
+   legs;
+   hands;
 
-const cat = {
-   species: 'cat',
-   name: 'Lily',
-   gender: 'female',
-   legs: 4,
-   hands: 0,
-   saying: 'meooow!',
-};
+   constructor( name, gender, saying) {
+      this.name = name;
+      this.gender = gender;
+      this.saying = saying;
+   }
 
-const woman = {
-   species: 'human',
-   name: 'Charlie',
-   gender: 'female',
-   legs: 2,
-   hands: 2,
-   saying: 'Hi John!',
-   friends: ['John', 'Lola'],
-};
+   showValues(obj) {
+      print(Object.values(obj).join('; '));
+   }
+}
 
-const man = {
-   species: 'human',
-   name: 'John',
-   gender: 'male',
-   legs: 2,
-   hands: 2,
-   saying: 'Hi Charlie!',
-   friends: ['Charlie', 'Lola'],
-};
+class Animal extends Creature {
+   constructor(name, gender, saying) {
+      super(name, gender, saying);
+      this.legs = 4;
+      this.hands = 0;
+   }
+}
 
-const catWoman = new Object();
-Object.setPrototypeOf(catWoman, cat);
-catWoman.species = 'human';
-catWoman.name = 'Lola';
-catWoman.legs = 2;
-catWoman.hands = 2;
-catWoman.saying = catWoman.saying;
-catWoman.friends = ['John', 'Charlie'];
+class Cat extends Animal {
+   constructor(name, gender, saying) {
+      super(name, gender, saying);
+      this.species = 'cat';
+   }
+}
 
-// ======== OUTPUT ========
-/* Use print(message) for output.
-   Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
+class Dog extends Animal {
+   constructor(name, gender, saying) {
+      super(name, gender, saying);
+      this.species = 'dog';
+   }
+}
 
-   Message can contain HTML markup. You may also tweak index.html and/or styles.css.
-   However, please, REFRAIN from improving visuals at least until your code is reviewed
-   so code reviewers might focus on a single file that is index.js.
-   */
+class Human extends Creature {
 
-/* Print examples:
-   print('ABC');
-   print('<strong>ABC</strong>');
-   print('<strong>ABC</strong>', 'div');
+   constructor(name, gender, saying) {
+      super(name, gender, saying);
+      this.species = 'human';
+      this.hands = 2;
+      this.legs = 2;
+   }
+}
 
-   print('human; John; male; 2; 2; Hello world!; Rex, Tom, Jenny');
-   print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
-   print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
-   */
+const inhabitants = [
+   new Dog('Robert', 'male', 'BARK!'),
+   new Cat('Lily', 'female', 'meooow!'),
+   new Human('Charlie', 'female', 'Hi John!'),
+   new Human('John', 'male', 'Hi Charlie!'),
+];
 
-const inhabitants = [dog, cat, woman, man, catWoman];
-inhabitants.forEach(obj => {
-   print(Object.values(obj).join('; '))
-});
+inhabitants.forEach((obj) => {
+   obj.showValues(obj);
+})
