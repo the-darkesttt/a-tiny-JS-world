@@ -17,15 +17,13 @@ class Creature {
    }
 
    showValues() {
-      const valueKeys = [
+      const inhabitantProps = [
          'species',
          'name',
          'gender',
          'saying'
       ];
-      const inhabitantValues = valueKeys.map((key) => {
-         return `${this[key]}`;
-      });
+      const inhabitantValues = inhabitantProps.map(propName => this[propName]);
       return inhabitantValues;
    }
 }
@@ -37,14 +35,12 @@ class Animal extends Creature {
    }
 
    showValues() {
-      const valueKeys = [
+      const inhabitantProps = [
          'paws'
       ];
-      let inhabitantValues = valueKeys.map((key) => {
-         return `${this[key]}`;
-      });
+      let inhabitantValues = inhabitantProps.map(propName => this[propName]);
       let inhabitantValuesNew = super.showValues().concat(inhabitantValues);
-      return print(inhabitantValuesNew.join('; '));
+      return inhabitantValuesNew.join('; ');
    }
 }
 
@@ -68,15 +64,13 @@ class Human extends Creature {
    }
 
    showValues() {
-      const valueKeys = [
+      const inhabitantProps = [
          'legs',
          'hands',
       ];
-      let inhabitantValues = valueKeys.map((key) => {
-         return `${this[key]}`;
-      });
+      let inhabitantValues = inhabitantProps.map(propName => this[propName]);
       let inhabitantValuesNew = super.showValues().concat(inhabitantValues);
-      return print(inhabitantValuesNew.join('; '));
+      return inhabitantValuesNew.join('; ');
    }
 }
 
@@ -88,5 +82,5 @@ const inhabitants = [
 ];
 
 inhabitants.forEach((inhabitant) => {
-   inhabitant.showValues();
-})
+   print(inhabitant.showValues());
+});
