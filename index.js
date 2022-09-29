@@ -15,17 +15,6 @@ class Creature {
       this.saying = saying;
       this.species = species;
    }
-
-   showValues() {
-      const inhabitantProps = [
-         'species',
-         'name',
-         'gender',
-         'saying'
-      ];
-      const inhabitantValues = inhabitantProps.map(propName => this[propName]);
-      return inhabitantValues;
-   }
 }
 
 class Animal extends Creature {
@@ -35,12 +24,7 @@ class Animal extends Creature {
    }
 
    showValues() {
-      const inhabitantProps = [
-         'paws'
-      ];
-      let inhabitantValues = inhabitantProps.map(propName => this[propName]);
-      let inhabitantValuesNew = super.showValues().concat(inhabitantValues);
-      return inhabitantValuesNew.join('; ');
+      return `${this.species}; ${this.name}; ${this.gender}; ${this.saying}; ${this.paws}`
    }
 }
 
@@ -64,13 +48,7 @@ class Human extends Creature {
    }
 
    showValues() {
-      const inhabitantProps = [
-         'legs',
-         'hands',
-      ];
-      let inhabitantValues = inhabitantProps.map(propName => this[propName]);
-      let inhabitantValuesNew = super.showValues().concat(inhabitantValues);
-      return inhabitantValuesNew.join('; ');
+      return `${this.species}; ${this.name}; ${this.gender}; ${this.saying}; ${this.legs}; ${this.hands}`
    }
 }
 
